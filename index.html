@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RVK-Signtaurschilder</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/paper.css">
+    <style>
+     
+      
+      
+    </style>
+  </head>
+  <!-- Set "A5", "A4" or "A3" for class name -->
+<!-- Set also "landscape" if you need -->
+<body id="body" class="A4">
+  
+  <div id="signaturesContainer" class="no-print">
+    <h5 id="draggable" style="cursor:move; margin: 10px 0px;">Import</h5>
+    
+    <input id="date" value="2017-06-01" type="date"><span id="dateLoading" style="cursor:pointer" onclick="loadSignaturesForDate()"></span>
+    
+    <br>
+    <textarea id="signatures" style="margin: 10px 0px;" placeholder="keine Daten">
+ST 110 B673(2)+2
+ST 510 S05 H798 W2(2)+1
+ST 250 J35 H819 C7-1
+ST 250 J35 H819 C27(6)-1+3
+ST 250 J35(2)+1
+ST 250 J35(2)+2</textarea>
+    <br>
+    <button onclick="createFromTextarea()">aus Textfeld</button>
+     oder 
+    <button onclick="createDummy()">Dummy</button>
+    
+    <hr style="border: 1px dashed #ccc;">
+    <label><input id="printLabelHeader" type="checkbox" checked> Kopfzeile drucken</label><br>
+    <button onclick="window.print()" style="margin: 10px 0px;">Drucken</button>
+  </div>
+  
+  <script src="js/private.js"></script>
+  <script src="js/rvk.js"></script>
+  
+</body>
+</html>
