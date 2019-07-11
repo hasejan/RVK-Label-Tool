@@ -13,6 +13,8 @@ Features:
 * Horizontale und vertikale Ausrichtung möglich
 * Dummylabel
 
+![alt text](https://github.com/BibliothekTHWildau/RVK-Label-Tool/raw/master/example/screenshot.png)
+
 Die Papiermaße basieren auf dem Projekt paper-css:
 
 https://github.com/cognitom/paper-css/blob/master/paper.css
