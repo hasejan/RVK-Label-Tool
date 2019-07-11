@@ -1,0 +1,309 @@
+@page { margin: 0 }
+body { margin: 0 }
+.sheet {
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  page-break-after: always;
+  z-index:10;
+}
+
+/** Paper sizes **/
+body.A3               .sheet { width: 297mm; height: 419mm }
+body.A3.landscape     .sheet { width: 420mm; height: 296mm }
+body.A4               .sheet { width: 210mm; height: 296mm }
+body.A4.landscape     .sheet { width: 297mm; height: 209mm }
+body.A5               .sheet { width: 148mm; height: 209mm }
+body.A5.landscape     .sheet { width: 210mm; height: 147mm }
+body.letter           .sheet { width: 216mm; height: 279mm }
+body.letter.landscape .sheet { width: 280mm; height: 215mm }
+body.legal            .sheet { width: 216mm; height: 356mm }
+body.legal.landscape  .sheet { width: 357mm; height: 215mm }
+
+/** Padding area **/
+.sheet.padding-10mm { padding: 10mm }
+.sheet.padding-15mm { padding: 15mm }
+.sheet.padding-20mm { padding: 20mm }
+.sheet.padding-25mm { padding: 25mm }
+
+/** For screen preview **/
+@media screen {
+  body { background: #e0e0e0 }
+  .sheet {
+    background: white;
+    box-shadow: 0 .5mm 2mm rgba(0,0,0,.3);
+    margin: 5mm auto;
+  }
+  
+}
+
+/** Fix for Chrome issue #273306 **/
+@media print {
+  body.A3.landscape { width: 420mm }
+  body.A3, body.A4.landscape { width: 297mm }
+  body.A4, body.A5.landscape { width: 210mm }
+  body.A5                    { width: 148mm }
+  body.letter, body.legal    { width: 216mm }
+  body.letter.landscape      { width: 280mm }
+  body.legal.landscape       { width: 357mm }
+  .no-print{display:none;}
+  
+  .label { box-shadow: none; }
+}
+
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+*{
+  font-family: Arial;
+}
+
+.label-area{
+  padding: 10.5mm 10mm;
+  /*background-color:lightgrey*/
+}
+
+.label {
+  width: 38mm;
+  height: 55mm;
+  /*box-shadow: inset 0px 0px 1px black;*/
+  float: left;
+  position: relative;
+}
+
+/*#body .label:nth-child(2n+1){
+  background-color: #f6f6f6;
+}*/
+
+.label:hover{
+  background-color: #f6f6f6;
+}
+
+
+.label.test{
+  background: url(original.png);
+  background-size: contain;
+}
+
+.label.vertical{
+  writing-mode: sideways-rl;
+  text-orientation: mixed;
+}
+
+.line:hover{
+  border:1px dotted lightblue;
+}
+.horizontal .line { }
+
+.vertical .line { display: inline; }
+
+.horizontal > .th {
+  font-size: 6pt;
+  line-height: 0pt;
+  text-align: center;
+  /* margin-top: 7.6mm; */
+  position: relative;
+  top: 8.5mm;
+}
+
+.vertical > .th {
+  font-size: 6pt;
+  line-height: 0pt;
+  text-align: center;
+  /*margin-right: 12.6mm;*/
+  position: relative;
+  right: 14.6mm;
+  
+}
+
+.th-light{
+  color:#80add6;
+}
+.th-dark{
+  color: #005bae
+}
+.blue{
+  color:rgb(0,91,174)
+}
+
+.horizontal .signature {
+  width: 38mm;
+  text-align: center;
+  position: relative;
+  top: 14mm;
+}
+
+.vertical .signature{
+
+  height: 55mm;
+  text-align: center;
+  /*line-height: 20px;*/
+  position: relative;
+  right: 17mm;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.horizontal .l1 {
+  font-size: 20pt;
+  line-height: 20pt;
+  height: 20pt;
+  display: block;
+}
+
+.vertical .l1 {
+  font-size: 16pt;
+  vertical-align: baseline;
+  margin-bottom: 1.5mm;
+}
+
+.horizontal .l2 {
+  font-size: 18pt;
+  line-height: 18pt;
+  height: 18pt;
+  margin-top: 1.5mm;
+  display: block;
+}
+
+.vertical .l2 {
+  font-size: 14pt;
+  margin-bottom: 1.5mm;
+}
+
+.horizontal .l3 {
+  font-size: 15pt;
+  line-height: 15pt;
+  height: 15pt;
+  margin-top: 4.7mm;
+  display: block;
+}
+
+.vertical .l3 {
+  font-size: 14pt;
+  }
+
+.horizontal .l4 {
+  font-size: 14pt;
+  line-height: 14pt;
+  height: 14pt;
+  margin-top: 1.5mm;
+  display: block;
+}
+
+.vertical .l4 {
+  font-size: 13pt;
+  font-weight: normal;
+}
+
+.horizontal .l5{
+  font-size: 14pt;
+  line-height: 14pt;
+  height: 14pt;
+  display: block;
+}
+
+.vertical .l5 {
+  font-size: 13pt;
+  }
+
+#signaturesContainer{
+  padding:10px;
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  background: white;
+  box-shadow: 0 .5mm 2mm rgba(0,0,0,.3);
+  /*margin: 5mm auto;*/
+  z-index:100;
+}
+
+#signatures{
+  width:324px;
+  height:324px;
+}
+
+#dateLoading{font-size: 12px; margin-left:5px;}
+#dateLoading:after{
+  content:"\01F5D3";
+}
+#dateLoading.loading:after{
+  content:"warte..."
+}
+.rotate-button{
+  position:absolute;
+  top: 5px; right: 5px;
+  writing-mode: lr;
+  z-index: 100;
+  cursor:pointer;
+  color:#e0e0e0;
+  border-radius: 20px;
+	width: 20px;
+	/* height: 20px; */
+	text-align: center;
+	line-height: 20px;
+	font-weight: bold;
+        transition: all .2s ease-in-out;
+}
+
+.rotate-button:hover{
+ transform: scale(1.5);
+ color:#000;
+}
+
+.delete-button {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	writing-mode: lr;
+	z-index: 100;
+	cursor: pointer;
+	color: #f88;
+	/*ackground: #fff;*/
+	/* border: 1px dashed gray; */
+	border-radius: 20px;
+	width: 20px;
+	/* height: 20px; */
+	text-align: center;
+	line-height: 20px;
+	font-weight: bold;
+        transition: all .2s ease-in-out;
+}
+
+.delete-button:hover{
+ transform: scale(1.5);
+ color:red;
+}
+
+@keyframes grow {
+  from {color: #f88;}
+  to {color: red;}
+}
+
+/*.delete-button{
+  position:absolute;
+  top: 5px; left: 5px;
+  writing-mode: lr;
+  z-index: 100;
+  cursor:pointer;
+  color:red;
+}*/
+
+/* tests */
+#mm {
+  position:absolute;
+  left: 0;
+}
+.mm{
+  position: relative;
+  display:inline-block;
+  width:1mm;
+  height:100mm;
+}
+
+#mm .mm:nth-child(2n+1){
+  background-color:#000;
+}
