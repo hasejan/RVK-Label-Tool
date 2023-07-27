@@ -19,7 +19,7 @@ else if(d.getDay() === 6)
 // as on https://stackoverflow.com/questions/6982692/html5-input-type-date-default-value-to-today
 date.valueAsDate = d;
  
-// loadSignaturesForDate();
+//loadSignaturesForDate();
 
 date.onchange = loadSignaturesForDate;
 
